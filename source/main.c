@@ -24,6 +24,7 @@
 #include <AFakeNative/AFakeNative.h>
 #include <vitasdk.h>
 #include <stdio.h>
+#include <string.h>
 
 int _newlib_heap_size_user = 256 * 1024 * 1024;
 
@@ -63,7 +64,7 @@ int main() {
 	FILE *f = fopen("ux0:data/jetcarstunts/assets/shaders/xyz_uvw.frag", "rb");
 	if (f) {
 		void *buf = malloc(1024 * 1024);
-		fread(buf, 1, buf, f);
+		fread(buf, 1, (size_t)buf, f);
 		fclose(f);
 		if (!strstr(buf, "gl_FragDepth")) {
 			f = fopen("ux0:data/jetcarstunts/assets/shaders/xyz_uvw.frag", "wb");

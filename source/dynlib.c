@@ -1014,7 +1014,7 @@ so_default_dynlib default_dynlib[] = {
 };
 
 void kill_sles() {
-	default_dynlib[0].func = &ret1;
+	default_dynlib[0].func = (uintptr_t)&ret1;
 }
 
 void resolve_imports(so_module* mod) {
